@@ -3,16 +3,25 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { WebSocketComponent } from './web-socket/web-socket.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiserviceService } from './service/apiservice.service';
+import { TableModule } from 'primeng/table';
+import { Socket, SocketIoModule } from 'ngx-socket-io';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WebSocketComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    SocketIoModule.forRoot({ url: 'http://localhost:3000', options: {} }),
+    TableModule
   ],
-  providers: [],
+  providers: [ApiserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
